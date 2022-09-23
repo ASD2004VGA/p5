@@ -1,0 +1,7 @@
+{
+  "include": [
+    "*.js",
+    "node_modules/p5/lib/*.js",
+    "./node_modules/@types/p5/global.d.ts"
+  ]
+}
