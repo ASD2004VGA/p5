@@ -4,10 +4,17 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: ['standard'],
+  extends: [
+    'standard'
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  rules: {}
+  plugins: [
+    '@typescript-eslint'
+  ],
+  rules: {
+  }
 }
