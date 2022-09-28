@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "sketch": "parcel ./index.html --open"
+    "sketch": "parcel ./src/index.html --open"
   },
   "repository": {
     "type": "git",
