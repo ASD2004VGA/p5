@@ -5,6 +5,10 @@ Dette projekt har til formål at få p5.js til at fungere sammen med bl.a. es-li
 # Opsætning
 
 - Installér Visual Studio Code [https://code.visualstudio.com/](https://code.visualstudio.com/).
+- I Visual Studio Code skal du installere Microsofts eslint-plugin:
+  ```
+  ext install dbaeumer.vscode-eslint
+  ```
 - Installér node.js [https://nodejs.org/en/](https://nodejs.org/en/).
 - Åbn Visual Studio Code.
 - Åbn kommando-paletten (Win: Ctrl+Shift+P, Mac: Cmd+Shift+P).
