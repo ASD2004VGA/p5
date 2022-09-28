@@ -19,7 +19,7 @@ Dette projekt har til formål at få p5.js til at fungere sammen med bl.a. es-li
   ```
   npm install
   ```  
-- Kør nu følgende script for at starte en webserver, der viser en p5-sketch fra `sketch.ts`:
+- Kør nu følgende script for at starte en webserver, der viser en p5-sketch fra `explosion.js` i mappen :
   ```
   npm run sketch
   ```
