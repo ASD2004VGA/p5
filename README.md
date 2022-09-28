@@ -13,7 +13,7 @@ Dette projekt har til formål at få p5.js til at fungere sammen med bl.a. es-li
   1. Fra kommando-paletten i Visual Studio Code vælges `Git: Clone`.
   2. Fra en terminal køres kommandoen: 
      ```
-     git clone https://github.com/petey33/p5
+     git clone git@github.com:PeterSterner/p5.git
      ```
 - Installér projektets afhængigheder (enten fra kommando-paletten med `Run task` eller fra en terminal):
   ```
