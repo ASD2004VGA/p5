@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "sketch": "parcel ./index.html --open",
-    "console": "nodemon ./sketch.ts"
+    "sketch": "parcel ./index.html --open"
   },
   "repository": {
     "type": "git",
