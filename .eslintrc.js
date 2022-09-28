@@ -5,7 +5,9 @@ module.exports = {
     node: true
   },
   extends: [
-    'standard'
+    'standard',
+    'p5js',
+    'p5js/sound'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -16,5 +18,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'no-unused-vars': 'off'
   }
 }
