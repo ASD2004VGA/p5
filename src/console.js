@@ -1,5 +1,5 @@
-import { squareRoot } from 'lib.js'
+import { squareRoot } from './lib.js'
 
-const res = squareRoot(4)
+const res = squareRoot(16)
 
 console.log(res)
