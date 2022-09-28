@@ -3,6 +3,7 @@
     "*.js",
     "./node_modules/p5/lib/p5.min.js",
     "./node_modules/p5/lib/addons/p5.sound.min.js",
-    "./node_modules/@types/p5/global.d.ts"
+    "./node_modules/@types/p5/global.d.ts", 
+    "src/*.js"  
   ]
 }
