@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "console": "nodemon ./src/console.js",
     "sketch": "parcel ./src/index.html --open"
   },
   "repository": {
@@ -19,7 +20,6 @@
     "@types/p5": "^1.4.3",
     "jshint": "^2.13.5",
     "jslint": "^0.12.1",
-    "nodemon": "^2.0.20",
     "p5": "^1.4.2",
     "parcel": "^2.7.0"
   },
@@ -33,6 +33,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.0.1",
+    "nodemon": "^2.0.20",
     "typescript": "^4.8.3"
   }
 }
