@@ -21,7 +21,7 @@
     "jshint": "^2.13.5",
     "jslint": "^0.12.1",
     "p5": "^1.4.2",
-    "parcel": "^2.7.0"
+    "parcel-bundler": "^1.12.5"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.38.1",
