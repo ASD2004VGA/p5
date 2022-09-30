@@ -2,21 +2,10 @@
   "name": "p5",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "scripts": {
     "console": "nodemon ./src/console.js",
     "sketch": "parcel ./src/index.html --open"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PeterSterner/p5.git"
-  },
-  "author": "Peter Sterner",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PeterSterner/p5/issues"
-  },
-  "homepage": "https://github.com/PeterSterner/p5#readme",
   "dependencies": {
     "@types/p5": "^1.4.3",
     "jshint": "^2.13.5",
