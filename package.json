@@ -2,6 +2,7 @@
   "name": "p5",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "console": "nodemon ./src/console.js",
     "sketch": "parcel ./src/index.html --open"
