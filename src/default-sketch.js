@@ -1,4 +1,4 @@
-import explosionImage from './assets/explosion.png'
+import explosionImage from 'url:./assets/explosion.png'
 import testAudio from 'url:./assets/audio.mp3'
 
 let img
