@@ -1,12 +1,12 @@
-import explosionImage from 'url:./assets/explosion.png'
-import testAudio from 'url:./assets/audio.mp3'
+import importedImage from 'url:./assets/explosion.png'
+import importedAudio from 'url:./assets/audio.mp3'
 
 let img
 let audio
 
 function preload () {
-  img = loadImage(explosionImage)
-  audio = loadSound(testAudio)
+  img = loadImage(importedImage)
+  audio = loadSound(importedAudio)
 }
 
 function setup () {
