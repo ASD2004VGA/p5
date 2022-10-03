@@ -1,5 +1,5 @@
-
 import 'p5'
+
 // import { setup, draw, mousePressed } from './explosion.js'
 import { preload, setup, draw, mousePressed, keyPressed } from './default-sketch.js'
 

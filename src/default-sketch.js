@@ -6,11 +6,11 @@ let audio
 
 function preload () {
   img = loadImage(explosionImage)
+  audio = new Audio(testAudio)
 }
 
 function setup () {
   createCanvas(windowWidth, windowHeight)
-  audio = new Audio(testAudio)
 }
 
 function draw () {
