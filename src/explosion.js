@@ -24,7 +24,7 @@ class Cirkel {
 
 function preload () {}
 
-function setup () {
+export function setup () {
   createCanvas(windowWidth, windowHeight)
 
   for (let index = 0; index < N; index++) {
@@ -39,7 +39,7 @@ function setup () {
   }
 }
 
-function draw () {
+export function draw () {
   if (runSimulation) {
     for (let index = 0; index < N; index++) {
       liste[index].draw()
@@ -47,7 +47,7 @@ function draw () {
   }
 }
 
-function mousePressed () {
+export function mousePressed () {
   runSimulation = !runSimulation
 }
 
