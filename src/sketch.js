@@ -1,7 +1,6 @@
-import 'p5'
+import { preload, setup, draw, mousePressed, keyPressed } from './default-sketch.js'
 
 // import { setup, draw, mousePressed } from './explosion.js'
-import { preload, setup, draw, mousePressed, keyPressed } from './default-sketch.js'
 
 window.preload = preload
 window.setup = setup

@@ -6,7 +6,7 @@ let audio
 
 function preload () {
   img = loadImage(explosionImage)
-  audio = new Audio(testAudio)
+  audio = loadSound(testAudio)
 }
 
 function setup () {
