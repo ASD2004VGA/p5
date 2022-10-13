@@ -15,7 +15,7 @@ class Dyr {
   // at instantiere klassen (dvs. at oprette
   // et objekt af denne klasse).
   constructor (alder, vægt, køn, navn) {
-    // Vi gemmer 5 attributter/egenskaber på objektet.
+    // Vi gemmer 4 attributter/egenskaber på objektet.
     // Med 'this' refererer vi til det objekt, som vi er
     // ved at oprette.
     this.alder = alder
