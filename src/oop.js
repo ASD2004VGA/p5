@@ -1,16 +1,19 @@
 console.clear()
-console.log('Eksempel på OOP')
+
+/*
+Nedenfor følger et simpel eksempel på
+objekt-orienteret programmering (OOP).
+*/
 
 class Dyr {
   constructor (alder, vægt, køn, navn) {
-    // Vi opretter 5 attributter på objektet.
-    // Husk at this referer til det objekt, som vi er
+    // Vi opretter 5 attributter/egenskaber på objektet.
+    // Husk at 'this' refererer til det objekt, som vi er
     // ved at oprette.
     this.alder = alder
     this.vægt = vægt
     this.køn = køn
     this.navn = navn
-    this.liv = 1
   }
 
   // Et eksempel på en metode
@@ -24,24 +27,27 @@ class Dyr {
 class Kat extends Dyr {
   constructor (alder, vægt, køn, navn) {
     super(alder, vægt, køn, navn)
-    this.liv = 9
-    this.trofast = false
+    this.liv = 9 // En ny attribut tilføjes.
+    this.trofast = false // En ny attribut tilføjes.
   }
 
-  // Eksempel på polymorfi.
-  // Metoden lavLyd i Dyr-klassen overskrives.
+  // Et eksempel på polymorfi.
+  // Metoden 'lavLyd' fra Dyr-klassen overskrives.
   lavLyd () {
     console.log(this.navn, ': Miaw!')
   }
 }
 
-// En anden under-klasse der nedarver fra Dyr-klassen.
+// Et eksempel på en anden under-klasse,
+// der nedarver fra Dyr-klassen.
 class Hund extends Dyr {
   constructor (alder, vægt, køn, navn) {
     super(alder, vægt, køn, navn)
     this.trofast = true
   }
 
+  // Et eksempel på polymorfi.
+  // Metoden 'lavLyd' fra Dyr-klassen overskrives.
   lavLyd () {
     console.log(this.navn, ': Vov vov!!')
   }

@@ -1,6 +1,10 @@
 /*
 Instance mode: If you want to run this sketch
-just add import './instance-mode' to sketch.js
+just add
+
+import './instance-mode'
+
+to sketch.js
 */
 
 import p5 from 'p5'
