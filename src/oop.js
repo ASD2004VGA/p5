@@ -5,10 +5,18 @@ Nedenfor følger et simpel eksempel på
 objekt-orienteret programmering (OOP).
 */
 
+// Vi kan tænke på en klasse som en skabelon.
+// Nedenfor ses en klasse ved navn Dyr.
+// Denne klasse indkapsler al kode, der
+// vedrører/beskriver et dyr.
+
 class Dyr {
+  // Metoden 'constructor' anvendes til
+  // at instantiere klassen (dvs. at oprette
+  // et objekt af denne klasse).
   constructor (alder, vægt, køn, navn) {
-    // Vi opretter 5 attributter/egenskaber på objektet.
-    // Husk at 'this' refererer til det objekt, som vi er
+    // Vi gemmer 5 attributter/egenskaber på objektet.
+    // Med 'this' refererer vi til det objekt, som vi er
     // ved at oprette.
     this.alder = alder
     this.vægt = vægt
@@ -16,7 +24,7 @@ class Dyr {
     this.navn = navn
   }
 
-  // Et eksempel på en metode
+  // Et eksempel på en metode i klassen
   lavLyd () {
     console.log(this.navn + ' laver en lyd')
   }
