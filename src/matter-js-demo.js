@@ -9,15 +9,17 @@ let engine
 let box, ball, ground
 
 class Ball {
-  constructor (x, y, diameter, options) {
-    this.body = Bodies.circle(x, y, diameter, options)
-    this.diameter = diameter
+  constructor (x, y, radius, color, options) {
+    this.body = Bodies.circle(x, y, radius, options)
+    this.radius = radius
+    this.color = color
     World.add(engine.world, this.body)
   }
 
   draw () {
     const pos = this.body.position
-    circle(pos.x, pos.y, this.diameter)
+    fill(this.color)
+    circle(pos.x, pos.y, 2 * this.radius)
   }
 }
 
@@ -32,13 +34,10 @@ class Box {
 
   draw () {
     const pos = this.body.position
-    const angle = this.body.angle
     push()
     fill(this.color)
-    translate(pos.x, pos.y)
-    rotate(angle)
     rectMode(CENTER)
-    rect(0, 0, this.w, this.h)
+    rect(pos.x, pos.y, this.w, this.h)
     pop()
   }
 }
@@ -46,16 +45,19 @@ class Box {
 function setup () {
   createCanvas(windowWidth, windowHeight)
   engine = Engine.create()
-  box = new Box(300, 10, 80, 80, 'yellow', { restitution: 1.1 })
-  ball = new Ball(100, 50, 40, { restitution: 0.7 })
-  ground = new Box(0, windowHeight - 50, windowWidth, 50, 'green', { isStatic: true })
+  // Bemærk: Matter.js tegner rektangler med rectMode sat til "CENTER"
+  box = new Box(windowWidth / 4 + 50, 0, 100, 50, 'yellow', { restitution: 0.9 })
+  ball = new Ball(windowWidth / 2, 0, 50, 'red', { restitution: 0.5 })
+  ground = new Box(windowWidth / 2, windowHeight / 2, windowWidth / 2, 50, 'green', { isStatic: true })
 }
 
 function draw () {
   background('lightblue')
   Engine.update(engine)
-  box.draw()
   ball.draw()
+  box.draw()
+
+  ground.draw()
 }
 
 export { setup, draw }
