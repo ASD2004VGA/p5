@@ -46,7 +46,7 @@ function setup () {
   createCanvas(windowWidth, windowHeight)
   engine = Engine.create()
   // Bemærk: Matter.js tegner rektangler med rectMode sat til "CENTER"
-  box = new Box(windowWidth / 4 + 50, 0, 100, 50, 'yellow', { restitution: 0.9 })
+  box = new Box(windowWidth / 4 + 50, 0, 100, 100, 'yellow', { restitution: 1.6 })
   ball = new Ball(windowWidth / 2, 0, 50, 'red', { restitution: 0.5 })
   ground = new Box(windowWidth / 2, windowHeight / 2, windowWidth / 2, 50, 'green', { isStatic: true })
 }
