@@ -24,9 +24,21 @@ Dette projekt har til formål at få p5.js til at fungere sammen med bl.a. es-li
 - Installér projektets afhængigheder (enten fra kommando-paletten med `Run task` eller fra en terminal):
   ```
   npm install
-  ``` 
-- Kør nu følgende script fra en terminal for at starte en webserver, der viser en p5-sketch fra `explosion.js`, der ligger i mappen `src`
+  ```
+- Start en terminal (fra kommando-paletten søges på `Terminal: Create new terminal`)
+- Kør nu følgende script fra terminalen for at starte en webserver, der viser en p5-sketchen `explosion.js`, der ligger i mappen `src`
   ```
   npm run sketch
   ```  
-  (Genvejen til at køre `ńpm run sketch` er  Win: Ctrl+Shift+B, Mac: Cmd+Shift+B).
+  (En hurtig genvej til at køre `ńpm run sketch` er  Win: Ctrl+Shift+B, Mac: Cmd+Shift+B).
+  
+# Kod din egen sketch
+
+- Opret en ny javascript-fil i mappen `src`. Kald den f.eks. `min-sketch.js`.
+- I `min-sketch.js` skriv nu ordet `sketch` og vent på, at der kommer en drop-down-menu frem. Tryk herefter på Enter-knappen.
+- Nu er en sketch med bl.a. funktionerne `setup` og `draw` sat op i din nye fil `min-sketch.js`. Tilføj din kode.
+- Når du skal køre din nye sketch, skal du åbne filen `sketch.js`og tilføje linjen
+  ```
+  import { preload, setup, draw, mousePressed, keyPressed } from './min-sketch.js'
+  ```
+  Husk at udkommentere andre importerede sketches.
