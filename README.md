@@ -35,10 +35,14 @@ Dette projekt har til formål at få p5.js til at fungere sammen med bl.a. es-li
 # Kod din egen sketch
 
 - Opret en ny javascript-fil i mappen `src`. Kald den f.eks. `min-sketch.js`.
-- I `min-sketch.js` skriv nu ordet `sketch` og vent på, at der kommer en drop-down-menu frem. Tryk herefter på Enter-knappen.
-- Nu er en sketch med bl.a. funktionerne `setup` og `draw` sat op i din nye fil `min-sketch.js`. Tilføj din kode.
-- Når du skal køre din nye sketch, skal du åbne filen `sketch.js`og tilføje linjen
+- I `min-sketch.js` skriver du nu ordet `sketch` og trykker på Tab-knappen. Nu tilføjes automatisk en sketch med bl.a. funktionerne `setup` og `draw`. 
+- Tilføj din egen kode.
+- Når du skal afprøve din nye sketch, skal du åbne filen `sketch.js`og tilføje linjen
   ```
   import { preload, setup, draw, mousePressed, keyPressed } from './min-sketch.js'
   ```
-  Husk at udkommentere andre importerede sketches.
+  Husk at udkommentere andre importerede sketches. Dit browser-vindue, der viste sketchen fra `explosion.js`opdateres automatisk.
+
+
+God fornøjelse med at programmere :-).
+
