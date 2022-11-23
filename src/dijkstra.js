@@ -66,7 +66,8 @@ function dijkstra (V, E) {
     numberOfVisitedNodes++
     relax(distances, predecessors, V, E, index)
   }
-  console.log(distances, predecessors)
+
+  return [distances, predecessors]
 }
 
 function getTwoDifferentRandomNumbers (max) {
@@ -92,15 +93,14 @@ function setup () {
   // generate edges...
   for (let index = 0; index < numberOfEdges; index++) {
     const [random1, random2] = getTwoDifferentRandomNumbers(V.length)
-    console.log(random1, random2)
     const node1 = V[random1]
     const node2 = V[random2]
     E.push(new Edge(node1, node2, random(0, 100)))
   }
   createCanvas(windowWidth, windowHeight)
   drawGraph()
-
-  dijkstra(V, E)
+  const [distances, predecessors] = dijkstra(V, E)
+  drawShortestPath(distances, predecessors, 8)
 }
 
 function drawEdge (e) {
@@ -115,6 +115,7 @@ function drawEdge (e) {
   fill('black')
   text(e.knude2.index, e.knude2.x, e.knude2.y)
   line(e.knude1.x, e.knude1.y, e.knude2.x, e.knude2.y)
+  text(round(e.vægt, 0), (e.knude1.x + e.knude2.x) / 2, (e.knude1.y + e.knude2.y) / 2)
 }
 
 function drawGraph () {
@@ -122,6 +123,17 @@ function drawGraph () {
   for (let index = 0; index < E.length; index++) {
     const edge = E[index]
     drawEdge(edge)
+  }
+}
+
+function drawShortestPath (distances, predecessors, dest) {
+  for (let index = 0; index < predecessors.length; index++) {
+    if (predecessors[dest] !== undefined) {
+      const pred = predecessors[dest]
+      stroke('blue')
+      line(V[dest].x, V[dest].y, V[pred].x, V[pred].y)
+      console.log('vi er her')
+    }
   }
 }
 
