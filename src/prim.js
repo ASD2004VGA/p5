@@ -106,14 +106,14 @@ function setup () {
   createCanvas(windowWidth, windowHeight)
   drawGraph()
   /*
-  //dijkstra
-  const [distances, predecessors] = dijkstra(V, E)
-  drawShortestPath(distances, predecessors, V.length - 1)
-  */
+    //dijkstra
+    const [distances, predecessors] = dijkstra(V, E)
+    drawShortestPath(distances, predecessors, V.length - 1)
+    */
 
   /*
-  //prim
-  */
+    //prim
+    */
   Prim(V, E)
 }
 
