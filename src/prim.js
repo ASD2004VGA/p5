@@ -16,64 +16,11 @@ class Edge {
 
 const V = []
 const E = []
-const numberOfNodes = 100
+const numberOfNodes = 10
 const numberOfEdges = 2 * numberOfNodes
 
 function getRandomInt (max) {
   return Math.floor(Math.random() * max)
-}
-
-function findUnvisitedNodeWithSmallestDistance (distances, visited) {
-  let minValue = Infinity
-  let minIndex
-  for (let index = 0; index < visited.length; index++) {
-    if (visited[index] === false && distances[index] < minValue) {
-      minValue = distances[index]
-      minIndex = index
-    }
-  }
-  return minIndex
-}
-
-function relax (distances, predecessors, V, E, index) {
-  for (let i = 0; i < E.length; i++) {
-    if (E[i].knude1.index === index) {
-      // Vi har en kant der udgår fra knuden, der er nummereret med index.
-      if (distances[index] + E[i].vægt < distances[E[i].knude2.index]) {
-        distances[E[i].knude2.index] = distances[index] + E[i].vægt
-        predecessors[E[i].knude2.index] = index
-      }
-    } else if (E[i].knude2.index === index) {
-      if (distances[index] + E[i].vægt < distances[E[i].knude1.index]) {
-        distances[E[i].knude1.index] = distances[index] + E[i].vægt
-        predecessors[E[i].knude1.index] = index
-      }
-    }
-  }
-}
-
-function dijkstra (V, E) {
-  // Laver en liste med samme længde som V og som indeholder Infinity på alle pladser.
-  const distances = Array(V.length).fill(Infinity)
-  // Laver en liste med samme længde som V og sætter alle pladser til undefined.
-  const predecessors = Array(V.length).fill(undefined)
-  // Vi antager, at det er knude 0, der er source og sætter derfor dens afstand til 0.
-  distances[0] = 0
-  // Vi laver en liste med samme længde som V og sætter alle pladser til false.
-  const visited = Array(V.length).fill(false)
-
-  // Vha. variablen numberOfVisitedNodes holder vi styr på hvor mange knuder, vi mangler at besøge
-  let numberOfVisitedNodes = 0
-
-  // Nu starter while-løkken i Dijkstras algoritme:
-  while (numberOfVisitedNodes < V.length) {
-    const index = findUnvisitedNodeWithSmallestDistance(distances, visited)
-    visited[index] = true
-    numberOfVisitedNodes++
-    relax(distances, predecessors, V, E, index)
-  }
-
-  return [distances, predecessors]
 }
 
 function getTwoDifferentRandomNumbers (max) {
@@ -89,32 +36,6 @@ function getTwoDifferentRandomNumbers (max) {
     }
   }
   return [random1, random2]
-}
-
-function setup () {
-  // generate nodes...
-  for (let index = 0; index < numberOfNodes; index++) {
-    V.push(new Node(random(windowWidth), random(windowHeight), index))
-  }
-  // generate edges...
-  for (let index = 0; index < numberOfEdges; index++) {
-    const [random1, random2] = getTwoDifferentRandomNumbers(V.length)
-    const node1 = V[random1]
-    const node2 = V[random2]
-    E.push(new Edge(node1, node2, random(0, 100)))
-  }
-  createCanvas(windowWidth, windowHeight)
-  drawGraph()
-  /*
-    //dijkstra
-    const [distances, predecessors] = dijkstra(V, E)
-    drawShortestPath(distances, predecessors, V.length - 1)
-    */
-
-  /*
-    //prim
-    */
-  Prim(V, E)
 }
 
 function drawEdge (e) {
@@ -140,22 +61,38 @@ function drawGraph () {
   }
 }
 
-function drawShortestPath (distances, predecessors, destinationNode) {
-  while (predecessors[destinationNode] !== undefined) {
-    const pred = predecessors[destinationNode]
-    stroke('red')
-    strokeWeight(10)
-    line(V[destinationNode].x, V[destinationNode].y, V[pred].x, V[pred].y)
-    destinationNode = predecessors[destinationNode]
+function drawMST (T) {
+  T.forEach(edge => {
+    stroke('orange')
+    strokeWeight(6)
+    line(edge.knude1.x, edge.knude1.y, edge.knude2.x, edge.knude2.y)
+  })
+}
+
+function setup () {
+  // generate nodes...
+  for (let index = 0; index < numberOfNodes; index++) {
+    V.push(new Node(random(windowWidth), random(windowHeight), index))
   }
+  // generate edges...
+  for (let index = 0; index < numberOfEdges; index++) {
+    const [random1, random2] = getTwoDifferentRandomNumbers(V.length)
+    const node1 = V[random1]
+    const node2 = V[random2]
+    E.push(new Edge(node1, node2, random(0, 100)))
+  }
+  createCanvas(windowWidth, windowHeight)
+  drawGraph()
+
+  const T = Prim(V, E)
+  drawMST(T)
 }
 
 function Prim (V, E) {
   const T = new Set()
   const U = new Set()
   U.add(V[0])
-
-  while (U.length < V.length) {
+  while (U.size < V.length) {
     let minWeight = Infinity
     let nextEdge
     // find cheapest edge (u,v) with u in U and v in V\U
@@ -181,10 +118,7 @@ function Prim (V, E) {
     T.add(nextEdge)
   }
 
-  console.log(U.has(V[2]))
-  for (const item of U.keys()) {
-    console.log(item)
-  }
+  return T
 }
 
 function draw () {
