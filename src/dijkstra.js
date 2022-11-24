@@ -53,13 +53,19 @@ function relax (distances, predecessors, V, E, index) {
 }
 
 function dijkstra (V, E) {
+  // Laver en liste med samme længde som V og som indeholder Infinity på alle pladser.
   const distances = Array(V.length).fill(Infinity)
+  // Laver en liste med samme længde som V og sætter alle pladser til undefined.
   const predecessors = Array(V.length).fill(undefined)
-  distances[0] = 0 // source er altid knuden på plads 0 i V.
+  // Vi antager, at det er knude 0, der er source og sætter derfor dens afstand til 0.
+  distances[0] = 0
+  // Vi laver en liste med samme længde som V og sætter alle pladser til false.
   const visited = Array(V.length).fill(false)
 
+  // Vha. variablen numberOfVisitedNodes holder vi styr på hvor mange knuder, vi mangler at besøge
   let numberOfVisitedNodes = 0
 
+  // Nu starter while-løkken i Dijkstras algoritme:
   while (numberOfVisitedNodes < V.length) {
     const index = findUnvisitedNodeWithSmallestDistance(distances, visited)
     visited[index] = true
@@ -126,14 +132,13 @@ function drawGraph () {
   }
 }
 
-function drawShortestPath (distances, predecessors, dest) {
-  for (let index = 0; index < predecessors.length; index++) {
-    if (predecessors[dest] !== undefined) {
-      const pred = predecessors[dest]
-      stroke('blue')
-      line(V[dest].x, V[dest].y, V[pred].x, V[pred].y)
-      console.log('vi er her')
-    }
+function drawShortestPath (distances, predecessors, destinationNode) {
+  while (predecessors[destinationNode] !== undefined) {
+    const pred = predecessors[destinationNode]
+    stroke('red')
+    strokeWeight(10)
+    line(V[destinationNode].x, V[destinationNode].y, V[pred].x, V[pred].y)
+    destinationNode = predecessors[destinationNode]
   }
 }
 
