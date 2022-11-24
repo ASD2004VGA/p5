@@ -16,7 +16,7 @@ class Edge {
 
 const V = []
 const E = []
-const numberOfNodes = 10
+const numberOfNodes = 100
 const numberOfEdges = 2 * numberOfNodes
 
 function getRandomInt (max) {
@@ -105,8 +105,16 @@ function setup () {
   }
   createCanvas(windowWidth, windowHeight)
   drawGraph()
+  /*
+  //dijkstra
   const [distances, predecessors] = dijkstra(V, E)
-  drawShortestPath(distances, predecessors, 8)
+  drawShortestPath(distances, predecessors, V.length - 1)
+  */
+
+  /*
+  //prim
+  */
+  Prim(V, E)
 }
 
 function drawEdge (e) {
@@ -139,6 +147,24 @@ function drawShortestPath (distances, predecessors, destinationNode) {
     strokeWeight(10)
     line(V[destinationNode].x, V[destinationNode].y, V[pred].x, V[pred].y)
     destinationNode = predecessors[destinationNode]
+  }
+}
+
+function Prim (V, E) {
+  const T = new Set()
+  const U = new Set()
+  U.add(V[0])
+
+  while (U.length < V.length) {
+    // find cheapest edge (u,v) with u in U and v in V\U
+    for (let index = 0; index < E.length; index++) {
+      const element = E[index]
+    }
+  }
+
+  console.log(U.has(V[2]))
+  for (const item of U.keys()) {
+    console.log(item)
   }
 }
 
