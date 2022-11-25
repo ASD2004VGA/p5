@@ -16,7 +16,7 @@ class Edge {
 
 const V = []
 const E = []
-const numberOfNodes = 10
+const numberOfNodes = 15
 const numberOfEdges = 2 * numberOfNodes
 
 function getRandomInt (max) {
@@ -92,7 +92,7 @@ function Prim (V, E) {
   const T = new Set()
   const U = new Set()
   U.add(V[0])
-  while (U.size < V.length) {
+  while (U.size <= V.length) {
     let minWeight = Infinity
     let nextEdge
     // find cheapest edge (u,v) with u in U and v in V\U
