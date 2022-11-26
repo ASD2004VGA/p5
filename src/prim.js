@@ -16,7 +16,7 @@ class Edge {
 
 const V = []
 const E = []
-const numberOfNodes = 15
+const numberOfNodes = 10
 const numberOfEdges = 2 * numberOfNodes
 
 function getRandomInt (max) {
