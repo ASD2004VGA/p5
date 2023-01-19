@@ -8,6 +8,7 @@ let angle = 0
 let xSun, ySun
 let xEarth, yEarth, earthOffset
 let xMerkur, yMerkur, merkurOffset
+let xVenus, yVenus, venusOffset
 
 function preload () {
   img = loadImage(importedImage)
@@ -26,6 +27,10 @@ function setup () {
   merkurOffset = 200
   xMerkur = xSun + merkurOffset
   yMerkur = ySun
+  // venus
+  venusOffset = 400
+  xVenus = xSun + venusOffset
+  yVenus = ySun
 }
 
 function draw () {
@@ -49,6 +54,10 @@ function drawEarth () {
   yEarth = ySun + earthOffset * Math.sin(angle)
 }
 
+function drawVenus () {
+
+}
+
 function drawMerkur () {
   fill('lightgrey')
   const y = windowHeight / 2
@@ -57,13 +66,4 @@ function drawMerkur () {
   yMerkur = ySun + merkurOffset * Math.sin(angle * 20)
 }
 
-function mousePressed () {
-  console.log('You clicked the mouse!')
-  audio.play()
-}
-
-function keyPressed () {
-  console.log('You pressed this key: ', key)
-}
-
-export { preload, setup, draw, mousePressed, keyPressed }
+export { preload, setup, draw }
