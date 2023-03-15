@@ -93,27 +93,37 @@ function generateAddition () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
   const solution = a + b
-  return new Assignment('Udregn additionen ' + a + '+' + b, solution, 4)
+  return new Assignment('Udregn plusstykket ' + a + '+' + b, solution, 4)
 }
 
 function generateSubtraction () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
   const solution = a - b
-  return new Assignment('Udregn subtraktionen ' + a + '-' + b, solution, 4)
+  return new Assignment('Udregn minusstykket ' + a + '-' + b, solution, 4)
 }
 
 function generateMultiplikation () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
+  const solution = a * b
+  return new Assignment('Udregn gangestykket ' + a + '*' + b, solution, 4)
+}
+
+function generateDivision () {
+  const a = round(random(1, 10), 0)
+  const b = round(random(0, 10), 0)
   const solution = a / b
-  return new Assignment('Udregn subtraktionen ' + a + '/' + b, solution, 4)
+  return new Assignment('Udregn dividerstykket ' + a + '/' + b, solution, 4)
+}
 
 function setup () {
   // assignment = new Assignment("Løs ligningen 2x+4=10.", 10, 4);
   // assignment = generateEquation()
   // assignment = generateAddition()
-  assignment = generateSubtraction()
+  // assignment = generateSubtraction()
+  assignment = generateMultiplikation()
+  // assignment = generateDivision()
 
   scoreElem = createDiv('Score = 0')
   scoreElem.position(10, windowHeight - 25)
@@ -184,7 +194,9 @@ function checkCollisionWithAssignment () {
       score++
       // assignment = generateEquation()
       // assignment = generateAddition()
-      assignment = generateSubtraction()
+      // assignment = generateSubtraction()
+      assignment = generateMultiplikation()
+      // assignment = generateDivision()
     }
   }
 }
