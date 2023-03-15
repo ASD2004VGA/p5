@@ -96,6 +96,10 @@ function generateAddition () {
   return new Assignment('Udregn additionen ' + a + '+' + b, solution, 4)
 }
 
+function generateSubtraction () {
+
+}
+
 function setup () {
   // assignment = new Assignment("Løs ligningen 2x+4=10.", 10, 4);
   // assignment = generateEquation()
