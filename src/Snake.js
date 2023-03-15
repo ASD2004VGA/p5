@@ -72,7 +72,7 @@ class Assignment {
       circle(this.wrongAnswers[i].x, this.wrongAnswers[i].y, 10)
     }
     // Jeg tegner det rigtige svar
-    fill('red')
+    fill('white')
     text(this.answer.answer, this.answer.x, this.answer.y - 24)
     circle(this.answer.x, this.answer.y, 10)
     pop()
@@ -97,13 +97,17 @@ function generateAddition () {
 }
 
 function generateSubtraction () {
-
+  const a = round(random(1, 10), 0)
+  const b = round(random(0, 10), 0)
+  const solution = a - b
+  return new Assignment('Udregn additionen ' + a + '-' + b, solution, 4)
 }
 
 function setup () {
   // assignment = new Assignment("Løs ligningen 2x+4=10.", 10, 4);
   // assignment = generateEquation()
-  assignment = generateAddition()
+  // assignment = generateAddition()
+  assignment = generateSubtraction()
 
   scoreElem = createDiv('Score = 0')
   scoreElem.position(10, windowHeight - 25)
@@ -173,7 +177,8 @@ function checkCollisionWithAssignment () {
     )) {
       score++
       // assignment = generateEquation()
-      assignment = generateAddition()
+      // assignment = generateAddition()
+      assignment = generateSubtraction()
     }
   }
 }
