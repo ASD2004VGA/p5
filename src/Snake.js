@@ -100,8 +100,14 @@ function generateSubtraction () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
   const solution = a - b
-  return new Assignment('Udregn additionen ' + a + '-' + b, solution, 4)
+  return new Assignment('Udregn subtraktionen ' + a + '-' + b, solution, 4)
 }
+
+function generateMultiplikation () {
+  const a = round(random(1, 10), 0)
+  const b = round(random(0, 10), 0)
+  const solution = a / b
+  return new Assignment('Udregn subtraktionen ' + a + '/' + b, solution, 4)
 
 function setup () {
   // assignment = new Assignment("Løs ligningen 2x+4=10.", 10, 4);
