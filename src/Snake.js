@@ -38,15 +38,16 @@ class Assignment {
 
   generateWrongAnswers (min, max) {
     let tmp = 0
-
+    const usedAnswers = []
     while (true) {
       // const r = Math.floor(Math.random() * 100)
       const r = Math.floor(random(min, max))
       console.log(r, this.answer.answer)
-      if (r !== this.answer.answer) {
+      if (r !== this.answer.answer && !usedAnswers.includes(r)) {
         this.wrongAnswers.push(
           new Answer(r, random(50, windowWidth - 50), random(50, windowHeight - 50), false)
         )
+        usedAnswers.push(r)
         tmp++
         if (tmp === this.numberOfWrongAnswers) {
           break
