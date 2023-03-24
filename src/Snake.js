@@ -23,7 +23,7 @@ class Answer {
 }
 
 class Assignment {
-  constructor (text, answer, numberOfWrongAnswers) {
+  constructor (text, answer, numberOfWrongAnswers, min, max) {
     this.text = text
     this.answer = new Answer(
       answer,
@@ -33,16 +33,17 @@ class Assignment {
     )
     this.wrongAnswers = []
     this.numberOfWrongAnswers = numberOfWrongAnswers
-    this.generateWrongAnswers()
+    this.generateWrongAnswers(min, max)
   }
 
-  generateWrongAnswers () {
+  generateWrongAnswers (min, max) {
     let tmp = 0
 
     while (true) {
-      const r = Math.floor(Math.random() * 100)
-
-      if (r !== this.answer) {
+      // const r = Math.floor(Math.random() * 100)
+      const r = Math.floor(random(min, max))
+      console.log(r, this.answer.answer)
+      if (r !== this.answer.answer) {
         this.wrongAnswers.push(
           new Answer(r, random(50, windowWidth - 50), random(50, windowHeight - 50), false)
         )
@@ -81,40 +82,59 @@ class Assignment {
 
 let assignment
 
+function generateAssignment () {
+  const r = ceil(random(0, 5))
+  if (r === 1) {
+    assignment = generateEquation()
+  }
+  if (r === 2) {
+    assignment = generateAddition()
+  }
+  if (r === 3) {
+    assignment = generateSubtraction()
+  }
+  if (r === 4) {
+    assignment = generateMultiplikation()
+  }
+  if (r === 5) {
+    assignment = generateDivision()
+  }
+}
+
 function generateEquation () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0) * a
   const c = round(random(0, 10), 0) * a
   const solution = round((c - b) / a, 1)
-  return new Assignment('Løs ligningen ' + a + 'x+' + b + '=' + c, solution, 4)
+  return new Assignment('Løs ligningen ' + a + 'x+' + b + '=' + c, solution, 4, solution - 3, solution + 3)
 }
 
 function generateAddition () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
   const solution = a + b
-  return new Assignment('Udregn plusstykket ' + a + '+' + b, solution, 4)
+  return new Assignment('Udregn plusstykket ' + a + '+' + b, solution, 4, solution - 3, solution + 3)
 }
 
 function generateSubtraction () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
   const solution = a - b
-  return new Assignment('Udregn minusstykket ' + a + '-' + b, solution, 4)
+  return new Assignment('Udregn minusstykket ' + a + '-' + b, solution, 4, solution - 3, solution + 3)
 }
 
 function generateMultiplikation () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
   const solution = a * b
-  return new Assignment('Udregn gangestykket ' + a + '*' + b, solution, 4)
+  return new Assignment('Udregn gangestykket ' + a + '*' + b, solution, 4, solution - 3, solution + 3)
 }
 
 function generateDivision () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
-  const solution = a / b
-  return new Assignment('Udregn dividerstykket ' + a + '/' + b, solution, 4)
+  const solution = round(a / b)
+  return new Assignment('Udregn dividerstykket ' + a + '/' + b, solution, 4, solution - 3, solution + 3)
 }
 
 function setup () {
@@ -122,10 +142,11 @@ function setup () {
   // assignment = generateEquation()
   // assignment = generateAddition()
   // assignment = generateSubtraction()
-  assignment = generateMultiplikation()
+  // assignment = generateMultiplikation()
   // assignment = generateDivision()
+  generateAssignment()
 
-  scoreElem = createDiv('Score = 0')
+  scoreElem = createDiv()
   scoreElem.position(10, windowHeight - 25)
   scoreElem.id = 'score'
   scoreElem.style('color', 'white')
@@ -183,7 +204,7 @@ function checkCollisionWithAssignment () {
     ) {
       noLoop()
       const scoreVal = parseInt(scoreElem.html().substring(8))
-      scoreElem.html('Game Over! Din score var : ' + scoreVal)
+      scoreElem.html('Game Over! Din score var : ' + score)
     } else if (checkIfHeadIsInCircle(
       snakeHeadX,
       snakeHeadY,
@@ -195,8 +216,9 @@ function checkCollisionWithAssignment () {
       // assignment = generateEquation()
       // assignment = generateAddition()
       // assignment = generateSubtraction()
-      assignment = generateMultiplikation()
+      // assignment = generateMultiplikation()
       // assignment = generateDivision()
+      generateAssignment()
     }
   }
 }
