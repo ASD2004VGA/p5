@@ -40,7 +40,6 @@ class Assignment {
     let tmp = 0
     const usedAnswers = []
     while (true) {
-      // const r = Math.floor(Math.random() * 100)
       const r = Math.floor(random(min, max))
       console.log(r, this.answer.answer)
       if (r !== this.answer.answer && !usedAnswers.includes(r)) {
@@ -58,13 +57,11 @@ class Assignment {
 
   draw () {
     push()
-    // Jeg tegner opgaveteksten
     textSize(24)
     strokeWeight(0)
     textAlign(CENTER, CENTER)
     fill('white')
     text(this.text, windowWidth / 2, 20)
-    // Jeg tegner de forkerte svar
     for (let i = 0; i < this.wrongAnswers.length; i++) {
       text(
         this.wrongAnswers[i].answer,
@@ -73,7 +70,6 @@ class Assignment {
       )
       circle(this.wrongAnswers[i].x, this.wrongAnswers[i].y, 10)
     }
-    // Jeg tegner det rigtige svar
     fill('white')
     text(this.answer.answer, this.answer.x, this.answer.y - 24)
     circle(this.answer.x, this.answer.y, 10)
