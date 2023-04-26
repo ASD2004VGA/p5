@@ -1,12 +1,13 @@
 const numSegments = 10
 let direction = 'right'
+let highscore = 0
 
 const xStart = 0
 const yStart = 250
 const diff = 10
 
-const xCor = []
-const yCor = []
+let xCor = []
+let yCor = []
 
 const xFruit = 0
 const yFruit = 0
@@ -143,11 +144,6 @@ function setup () {
   // assignment = generateDivision()
   generateAssignment()
 
-  scoreElem = createDiv()
-  scoreElem.position(10, windowHeight - 25)
-  scoreElem.id = 'score'
-  scoreElem.style('color', 'white')
-
   createCanvas(windowWidth, windowHeight)
   frameRate(60)
   stroke(255)
@@ -168,9 +164,19 @@ function drawScore () {
   pop()
 }
 
+function drawHighScore () {
+  push()
+  textSize(24)
+  noStroke()
+  fill('white')
+  text('HighScore: ' + highscore, windowWidth - 150, 30)
+  pop()
+}
+
 function draw () {
   background(0)
   drawScore()
+  drawHighScore()
   assignment.draw()
   for (let i = 0; i < numSegments - 1; i++) {
     line(xCor[i], yCor[i], xCor[i + 1], yCor[i + 1])
@@ -200,8 +206,17 @@ function checkCollisionWithAssignment () {
       )
     ) {
       noLoop()
-      const scoreVal = parseInt(scoreElem.html().substring(8))
-      scoreElem.html('Game Over! Din score var : ' + score)
+      push()
+      noStroke()
+      textAlign(CENTER, CENTER)
+      textSize(40)
+      fill('red')
+      text('GAME OVER', windowWidth / 2, windowHeight / 2)
+      text('Tryk på R for at starte et nyt spil', windowWidth / 2, windowHeight / 2 + 45)
+      pop()
+      if (score > highscore) {
+        highscore = score
+      }
     } else if (checkIfHeadIsInCircle(
       snakeHeadX,
       snakeHeadY,
@@ -254,8 +269,6 @@ function checkGameStatus () {
     checkSnakeCollision()
   ) {
     noLoop()
-    const scoreVal = parseInt(scoreElem.html().substring(8))
-    scoreElem.html('Game Over! Din score var : ' + score)
   }
 }
 
@@ -291,6 +304,35 @@ function keyPressed () {
         direction = 'down'
       }
       break
+    case 82:
+      // R
+      if (score > highscore) {
+        highscore = score
+      }
+      xCor = []
+      yCor = []
+      score = 0
+      generateAssignment()
+
+      createCanvas(windowWidth, windowHeight)
+      frameRate(60)
+      stroke(255)
+      strokeWeight(10)
+
+      for (let i = 0; i < numSegments; i++) {
+        xCor.push(xStart + i * diff)
+        yCor.push(yStart)
+      }
+      /* eslint-disable */
+      if (!isLooping()) {
+        // Vi kommer kun ind i denne if-sætning
+        // hvis isLooping-kaldet returnerer false.
+        // Dvs. når vi allerede har kaldt noLoop().
+        // p5.js bryder sig ikke om, at man kan loop,
+        // når vi i forvejen er i loop-mode.
+        loop()
+        
+      }
   }
 }
 
