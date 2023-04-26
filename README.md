@@ -1,6 +1,8 @@
 # Formål
 
-Dette projekt har til formål at få p5.js til at fungere sammen med bl.a. es-lint.
+Dette er mit eksamensprojekt i faget Programmering B i foråret 2023, hvor jeg gik i 3.g på Vestskovens Gymnasium.
+
+Nedenfor følger en vejledning til, hvordan at man opsætter projektet.
 
 # Opsætning
 
@@ -31,18 +33,5 @@ Dette projekt har til formål at få p5.js til at fungere sammen med bl.a. es-li
   npm run sketch
   ```  
   (En hurtig genvej til at køre `ńpm run sketch` er  Win: Ctrl+Shift+B, Mac: Cmd+Shift+B).
-  
-# Kod din egen sketch
 
-- Opret en ny javascript-fil i mappen `src`. Kald den f.eks. `min-sketch.js`.
-- I `min-sketch.js` skriver du nu ordet `sketch` og trykker på Tab-knappen. Nu tilføjes automatisk en sketch med bl.a. funktionerne `setup` og `draw`. 
-- Tilføj din egen kode.
-- Når du skal afprøve din nye sketch, skal du åbne filen `sketch.js`og tilføje linjen
-  ```
-  import { preload, setup, draw, mousePressed, keyPressed } from './min-sketch.js'
-  ```
-  Husk at udkommentere andre importerede sketches. Dit browser-vindue, der viste sketchen fra `explosion.js`opdateres automatisk.
-
-
-God fornøjelse med at programmere :-).
 
