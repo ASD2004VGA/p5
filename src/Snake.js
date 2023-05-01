@@ -192,6 +192,17 @@ function checkIfHeadIsInCircle (headX, headY, x, y, r) {
   }
 }
 
+function showGameOver () {
+  push()
+  noStroke()
+  textAlign(CENTER, CENTER)
+  textSize(40)
+  fill('red')
+  text('GAME OVER', windowWidth / 2, windowHeight / 2)
+  text('Tryk på R for at starte et nyt spil', windowWidth / 2, windowHeight / 2 + 45)
+  pop()
+}
+
 function checkCollisionWithAssignment () {
   const snakeHeadX = xCor[xCor.length - 1]
   const snakeHeadY = yCor[yCor.length - 1]
@@ -206,14 +217,7 @@ function checkCollisionWithAssignment () {
       )
     ) {
       noLoop()
-      push()
-      noStroke()
-      textAlign(CENTER, CENTER)
-      textSize(40)
-      fill('red')
-      text('GAME OVER', windowWidth / 2, windowHeight / 2)
-      text('Tryk på R for at starte et nyt spil', windowWidth / 2, windowHeight / 2 + 45)
-      pop()
+      showGameOver()
       if (score > highscore) {
         highscore = score
       }
@@ -269,6 +273,10 @@ function checkGameStatus () {
     checkSnakeCollision()
   ) {
     noLoop()
+    showGameOver()
+    if (score > highscore) {
+      highscore = score
+    }
   }
 }
 
