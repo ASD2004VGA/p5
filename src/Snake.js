@@ -9,9 +9,6 @@ const diff = 10
 let xCor = []
 let yCor = []
 
-const xFruit = 0
-const yFruit = 0
-let scoreElem
 let score = 0
 
 class Answer {
