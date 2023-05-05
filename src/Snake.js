@@ -133,7 +133,6 @@ function generateDivision () {
 }
 
 function setup () {
-  // assignment = new Assignment("Løs ligningen 2x+4=10.", 10, 4);
   // assignment = generateEquation()
   // assignment = generateAddition()
   // assignment = generateSubtraction()
