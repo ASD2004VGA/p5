@@ -1,16 +1,20 @@
+// Længden af slangen og startretning.
 const numSegments = 10
 let direction = 'right'
 let highscore = 0
 
+// Slangens startposition.
 const xStart = 0
 const yStart = 250
 const diff = 10
 
+// Slanges x-koordinater og y-koordinater.
 let xCor = []
 let yCor = []
 
 let score = 0
 
+// Klasse for svarmulighederne.
 class Answer {
   constructor (answer, x, y, isAnswer) {
     this.answer = answer
@@ -20,6 +24,7 @@ class Answer {
   }
 }
 
+// Klasse for opgaverne.
 class Assignment {
   constructor (text, answer, numberOfWrongAnswers, min, max) {
     this.text = text
@@ -34,6 +39,7 @@ class Assignment {
     this.generateWrongAnswers(min, max)
   }
 
+  // Genererer de tilfældige forkerte svar på kanvas.
   generateWrongAnswers (min, max) {
     let tmp = 0
     const usedAnswers = []
@@ -53,6 +59,7 @@ class Assignment {
     }
   }
 
+  // Tegner opgaverne og svarmulighederne ind på kanvas.
   draw () {
     push()
     textSize(24)
@@ -77,6 +84,7 @@ class Assignment {
 
 let assignment
 
+// Genererer opgaver tilfældigt ud fra de givne emner.
 function generateAssignment () {
   const r = ceil(random(0, 5))
   if (r === 1) {
@@ -96,6 +104,7 @@ function generateAssignment () {
   }
 }
 
+// Genererer ligninger.
 function generateEquation () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0) * a
@@ -104,6 +113,7 @@ function generateEquation () {
   return new Assignment('Løs ligningen ' + a + 'x+' + b + '=' + c, solution, 4, solution - 3, solution + 3)
 }
 
+// Genererer plusstykker.
 function generateAddition () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
@@ -111,6 +121,7 @@ function generateAddition () {
   return new Assignment('Udregn plusstykket ' + a + '+' + b, solution, 4, solution - 3, solution + 3)
 }
 
+// Genererer minusstykker.
 function generateSubtraction () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
@@ -118,6 +129,7 @@ function generateSubtraction () {
   return new Assignment('Udregn minusstykket ' + a + '-' + b, solution, 4, solution - 3, solution + 3)
 }
 
+// Genererer gangestykker.
 function generateMultiplikation () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
@@ -125,6 +137,7 @@ function generateMultiplikation () {
   return new Assignment('Udregn gangestykket ' + a + '*' + b, solution, 4, solution - 3, solution + 3)
 }
 
+// Genererer dividerstykker.
 function generateDivision () {
   const a = round(random(1, 10), 0)
   const b = round(random(0, 10), 0)
@@ -132,6 +145,7 @@ function generateDivision () {
   return new Assignment('Udregn dividerstykket ' + a + '/' + b, solution, 4, solution - 3, solution + 3)
 }
 
+// Sætter kanvas op.
 function setup () {
   // assignment = generateEquation()
   // assignment = generateAddition()
@@ -145,12 +159,14 @@ function setup () {
   stroke(255)
   strokeWeight(10)
 
+  // Sætter slangen op.
   for (let i = 0; i < numSegments; i++) {
     xCor.push(xStart + i * diff)
     yCor.push(yStart)
   }
 }
 
+// Tegner scoren.
 function drawScore () {
   push()
   textSize(24)
@@ -160,6 +176,7 @@ function drawScore () {
   pop()
 }
 
+// Tegner highscoren.
 function drawHighScore () {
   push()
   textSize(24)
@@ -169,11 +186,13 @@ function drawHighScore () {
   pop()
 }
 
+// Tegner alt ovenstående ind på kanvas.
 function draw () {
   background(0)
   drawScore()
   drawHighScore()
   assignment.draw()
+  // For-lykke, som tegner slangens linjesegmenter mellem slangens punkter.
   for (let i = 0; i < numSegments - 1; i++) {
     line(xCor[i], yCor[i], xCor[i + 1], yCor[i + 1])
   }
@@ -182,12 +201,14 @@ function draw () {
   checkCollisionWithAssignment()
 }
 
+// Tjekker om slangens hoved rammer svarmulighederne.
 function checkIfHeadIsInCircle (headX, headY, x, y, r) {
   if (sqrt(pow(x - headX, 2) + pow(y - headY, 2)) < 2 * r) {
     return true
   }
 }
 
+// Tegner Game Over teksten.
 function showGameOver () {
   push()
   noStroke()
@@ -199,6 +220,7 @@ function showGameOver () {
   pop()
 }
 
+// Tjekker om slangen rammer nogle af de forkerte svarmuligheder.
 function checkCollisionWithAssignment () {
   const snakeHeadX = xCor[xCor.length - 1]
   const snakeHeadY = yCor[yCor.length - 1]
@@ -212,11 +234,13 @@ function checkCollisionWithAssignment () {
         5
       )
     ) {
+      // Hvis slangen rammer nogle af de forkerte svarmuligheder, så er der Game Over, og highscoren opdateres, hvis ny score er højere.
       noLoop()
       showGameOver()
       if (score > highscore) {
         highscore = score
       }
+      // Hvis slangen rammer den rigtige svarmulighed, så stiger scoren og spillet fortsætter med en ny opgave.
     } else if (checkIfHeadIsInCircle(
       snakeHeadX,
       snakeHeadY,
@@ -235,11 +259,13 @@ function checkCollisionWithAssignment () {
   }
 }
 
+// Får slangen til at bevæge sig.
 function updateSnakeCoordinates () {
   for (let i = 0; i < numSegments - 1; i++) {
     xCor[i] = xCor[i + 1]
     yCor[i] = yCor[i + 1]
   }
+  // Skifter slanges retning.
   switch (direction) {
     case 'right':
       xCor[numSegments - 1] = xCor[numSegments - 2] + diff
@@ -260,6 +286,7 @@ function updateSnakeCoordinates () {
   }
 }
 
+// Tjekker om slangen kolliderer med kanvas rammerne.
 function checkGameStatus () {
   if (
     xCor[xCor.length - 1] > width ||
@@ -276,6 +303,7 @@ function checkGameStatus () {
   }
 }
 
+// Tjekker om slangen kolliderer med sig selv.
 function checkSnakeCollision () {
   const snakeHeadX = xCor[xCor.length - 1]
   const snakeHeadY = yCor[yCor.length - 1]
@@ -286,6 +314,7 @@ function checkSnakeCollision () {
   }
 }
 
+// bestemmer spillets kontrols med piletasterne.
 function keyPressed () {
   switch (keyCode) {
     case 37:
@@ -308,8 +337,10 @@ function keyPressed () {
         direction = 'down'
       }
       break
+      // Reset-knappen.
     case 82:
       // R
+      // Genstarter spillet med ny highscore.
       if (score > highscore) {
         highscore = score
       }
@@ -340,4 +371,5 @@ function keyPressed () {
   }
 }
 
+// Eksporterer disse funktioner til sketch.js.
 export { setup, draw, keyPressed }
