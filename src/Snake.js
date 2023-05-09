@@ -8,7 +8,7 @@ const xStart = 0
 const yStart = 250
 const diff = 10
 
-// Slanges x-koordinater og y-koordinater.
+// Liste over slangens x-koordinater og y-koordinater.
 let xCor = []
 let yCor = []
 
